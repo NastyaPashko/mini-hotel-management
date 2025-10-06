@@ -1,0 +1,76 @@
+body {
+    font-family: "Avenir Next", "Nunito", sans-serif;
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    color: #4CAF50;
+}
+
+@media screen and (min-width: 992px) {
+    .ml-large {
+        margin-left: 15rem;
+    }
+}
+
+/* ====== Navbar ====== */
+
+.navbar-light .navbar-nav .nav-link {
+    color: black !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: #398a3c !important;
+    position: relative;
+}
+
+
+.navbar-light .navbar-nav .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    max-width: 12rem;
+    height: 2px;
+    background-color: #398a3c;
+    border-radius: 2px;
+}
+
+.navbar-nav .btn_icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    margin-right: 0.25rem;
+}
+
+/* ====== Button Styles ====== */
+
+
+.btn-outline-secondary {
+    max-width: 12rem;
+    padding: 0.5rem 1rem;
+  
+}
+
+.btn-outline-secondary:hover {
+    color: white;
+    background-color: #398a3c;
+    border-color: #398a3c;
+}

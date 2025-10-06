@@ -35,7 +35,7 @@
 | Layer | Technology |
 |-------|-------------|
 | Backend | Laravel 11 (PHP 8.3) |
-| Frontend | Blade, HTML, CSS, JavaScript, Tailwind CSS |
+| Frontend | Blade, HTML, CSS, JavaScript, Boostrap 5 |
 | Database | PostgreSQL |
 | Server | Apache |
 | Authentication | Laravel Auth |
