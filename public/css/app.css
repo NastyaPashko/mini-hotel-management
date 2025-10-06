@@ -1,6 +1,6 @@
 body {
     font-family: "Avenir Next", "Nunito", sans-serif;
-    background-color: #fafafa;
+    background-color: #efefef;
     color: #333;
     line-height: 1.6;
 }
@@ -66,11 +66,140 @@ body {
 .btn-outline-secondary {
     max-width: 12rem;
     padding: 0.5rem 1rem;
-  
+
 }
 
 .btn-outline-secondary:hover {
     color: white;
     background-color: #398a3c;
     border-color: #398a3c;
+}
+
+/* ====== Banner ====== */
+
+#img-banner {
+    object-fit: cover;
+    width: 100%;
+    height: 60vh;
+    display: block;
+
+}
+
+#banner-overlay {
+    position: absolute;
+
+    height: 60vh;
+    background-color: rgba(57, 138, 60, 0.6);
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+@media(max-width:767px) {
+
+    #img-banner,
+    #banner-overlay {
+        height: 40vh;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+
+    #img-banner,
+    #banner-overlay {
+        height: 50vh;
+    }
+}
+
+
+#banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    padding: 3rem;
+
+}
+
+#banner-content h1 {
+    color: white;
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+#banner-content p {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.site-btn {
+    font-size: 1rem;
+    background-color: rgb(248, 248, 248);
+    color: #333;
+    border: 0px;
+    padding: 0.65rem 1.4rem;
+    font-weight: 700;
+    border-radius: 0.7rem;
+    margin: 0.2rem;
+
+}
+
+.site-btn:hover {
+    background-color: rgb(218, 217, 217);
+
+}
+
+.site-btn-green {
+    background-color: transparent;
+    color: rgb(44, 44, 44);
+    text-decoration: none;
+}
+
+.site-btn-green:hover {
+    background-color: #72b774;
+    color: white;
+}
+
+/* ====== Hotel Features ====== */
+
+#hotel-features h2 {
+    text-align: center;
+    font-weight: 800;
+}
+
+.icon-circle {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    opacity: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* ====== Hotel Features ====== */
+
+footer {
+    font-size:1.1rem;
+}
+
+footer h2 {
+    font-size: 1.5rem;
+    font-weight: bold
+}
+
+footer .nav-link {
+    color: #28a745;
+    transition: color 0.3s;
+
+}
+
+footer .nav-link:hover {
+    color: #1e7e34;
+    text-decoration: underline;
 }
