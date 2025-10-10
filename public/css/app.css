@@ -3,6 +3,13 @@ body {
     background-color: #efefef;
     color: #333;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 .icon {
@@ -20,6 +27,16 @@ body {
     .ml-large {
         margin-left: 15rem;
     }
+}
+
+.auth-container {
+    box-sizing: content-box;
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 /* ====== Navbar ====== */
@@ -99,7 +116,7 @@ body {
 
     #img-banner,
     #banner-overlay {
-        height: 40vh;
+        height: 50vh;
     }
 }
 
@@ -107,7 +124,7 @@ body {
 
     #img-banner,
     #banner-overlay {
-        height: 50vh;
+        height: 55vh;
     }
 }
 
@@ -185,7 +202,7 @@ body {
 /* ====== Hotel Features ====== */
 
 footer {
-    font-size:1.1rem;
+    font-size: 1.1rem;
 }
 
 footer h2 {

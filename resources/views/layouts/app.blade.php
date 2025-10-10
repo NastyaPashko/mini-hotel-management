@@ -28,8 +28,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-large  mb-2 mb-lg-0">
+                    <li class="nav-item"> 
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Rooms</a>
+                        <a class="nav-link " aria-current="page" href="#">Rooms</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Services</a>

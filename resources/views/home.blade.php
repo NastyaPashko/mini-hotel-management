@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Weclome Banner -->
+    <!-- Welcome Banner -->
+
     <main>
         <section id="welcome-banner" class=" position-relative">
             <img id="img-banner" src="{{ 'images/hotel-bg.jpg' }}" />
@@ -20,6 +21,13 @@
             </div>
         </section>
 
+        <div class="container mt-3 w-50 mx-auto">
+            @if(session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success')}}
+            </div>
+            @endif
+        </div>
         <!-- Pluses -->
         <section id="hotel-features" class="container my-5">
             <h2 class="title"> Why Choose Us</h2>
