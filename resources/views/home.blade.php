@@ -22,10 +22,15 @@
         </section>
 
         <div class="container mt-3 w-50 mx-auto">
-            @if(session('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session('success')}}
-            </div>
+            @if (session('success'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{ session('error') }}
+                </div>
             @endif
         </div>
         <!-- Pluses -->

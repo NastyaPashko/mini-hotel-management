@@ -15,6 +15,30 @@ class AuthController extends Controller
 
         return view('auth.register');
     }
+    public function showLoginForm()
+    {
+
+        return view('auth.login');
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->validate(
+            [
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            ]
+        );
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/');
+        } else {
+            return back()->withErrors(
+                [
+                    'email' => 'Invalid credentials provided',
+                ]
+            );
+        }
+    }
     public function register(Request $request)
     {
 
@@ -28,13 +52,13 @@ class AuthController extends Controller
         $user = User::create(
             [
                 'full_name' => $request->full_name,
-                'email'=>$request->email,
-                'password'=>Hash::make($request->password),
-                'role'=>'client'
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => 'client'
             ]
 
         );
         Auth::login($user);
-        return redirect()->route('home')->with('success','Registration completed successfully');
+        return redirect()->route('home')->with('success', 'Registration completed successfully');
     }
 }

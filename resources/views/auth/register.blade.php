@@ -8,30 +8,41 @@
                     <div class="card-body p-4">
                         <h3 class="text-center mb-4 fw-bold">Register</h3>
 
-                        <form method="POST" action="#">
+                        <form method="POST" action="/register">
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label fw-semibold">Full Name</label>
-                                <input type="text" name="name" id="name" class="form-control"
-                                    placeholder="Enter your" required autofocus>
+                                <input type="text" name="full_name" id="full_name" class="form-control"
+                                    placeholder="Enter your" autofocus>
+                                @error('full_name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="email" class="form-label fw-semibold">Email address</label>
                                 <input type="email" name="email" id="email" class="form-control"
-                                    placeholder="you@example.com" required>
+                                    placeholder="you@example.com" >
+
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="password" class="form-label fw-semibold">Password</label>
                                 <input type="password" name="password" id="password" class="form-control"
-                                    placeholder="Create password" required>
+                                    placeholder="Create password" >
+
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="password_confirmation" class="form-label fw-semibold">Confirm Password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation"
-                                    class="form-control" placeholder="Confirm password" required>
+                                    class="form-control" placeholder="Confirm password">
                             </div>
 
                             <button type="submit" class="btn w-100 site-btn site-btn-green fw-semibold">

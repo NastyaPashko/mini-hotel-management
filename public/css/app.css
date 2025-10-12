@@ -220,3 +220,12 @@ footer .nav-link:hover {
     color: #1e7e34;
     text-decoration: underline;
 }
+
+.alert {
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.5rem;
+    ;
+    font-size: 0.8rem;
+    line-height: 1.2;
+
+}
