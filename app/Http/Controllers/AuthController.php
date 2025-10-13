@@ -45,8 +45,6 @@ class AuthController extends Controller
                     return redirect('/login')->withErrors(
                         ['email' => 'Role not recognized']
                     );
-
-                
             }
             return redirect('/');
         } else {
@@ -57,6 +55,8 @@ class AuthController extends Controller
             );
         }
     }
+
+
     public function register(Request $request)
     {
 
@@ -78,5 +78,12 @@ class AuthController extends Controller
         );
         Auth::login($user);
         return redirect()->route('home')->with('success', 'Registration completed successfully');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
 }

@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-large  mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="{{route('home')}}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="#">Rooms</a>
@@ -45,23 +45,33 @@
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
                     @auth
-                            <li class="nav-item mt-2 mt-lg-0 d-flex align-items-center">
-                                <a href="#" class="site-btn site-btn-green d-flex align-items-center">
-                                    My Profile
-                                </a>
-                            </li>
+                        <li class="nav-item mt-2 mt-lg-0 d-flex align-items-center">
+                            <a href="#" class="site-btn site-btn-green d-flex align-items-center">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d='M15 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m4.5 13c-.475-9.333-14.525-9.333-15 0' />
+                                </svg>
+                                My Profile
+                            </a>
+                        </li>
                         @if (in_array(Auth::user()->role, ['admin', 'manager']))
                             <li class="nav-item mt-2 mt-lg-0 d-flex align-items-center">
                                 <a href="#" class="site-btn site-btn-green">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round"
+                                        stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d='M3.5 15h17M3 9.4c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748C6.04 3 7.16 3 9.4 3h5.2c2.24 0 3.36 0 4.216.436a4 4 0 0 1 1.748 1.748C21 6.04 21 7.16 21 9.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C17.96 21 16.84 21 14.6 21H9.4c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C3 17.96 3 16.84 3 14.6z' />
+                                    </svg>
                                     Admin Panel
                                 </a>
                             </li>
                         @endif
-
                         <li class="nav-item mt-2 mt-lg-0">
-                            <form method="POST" action="#">
+                            <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="site-btn ">
+                                <button type="submit" class="site-btn">
                                     <svg width="24" height="24" fill="none" stroke="currentColor"
                                         stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round"
                                         stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -75,11 +85,23 @@
                     @else
                         <li class="nav-item me-1 mt-2 mt-lg-0">
                             <a class="site-btn site-btn-green" href="/login">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d='M13.496 21H6.5c-1.105 0-2-1.151-2-2.571V5.57c0-1.419.895-2.57 2-2.57h7' />
+                                    <path d='M13 15.5 9.5 12 13 8.5m6.5 3.496h-10' />
+                                </svg>
                                 Login
                             </a>
                         </li>
                         <li class="nav-item mt-2 mt-lg-0">
                             <a class="site-btn site-btn-green" href="/register">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d='M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2H9z' />
+                                    <path d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2' />
+                                </svg>
                                 Register
                             </a>
                         </li>
@@ -111,12 +133,15 @@
             <div class="col-6 col-md-2 mb-3">
                 <h5 class="fw-bold">Quick Links</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Rooms</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Rooms</a>
+                    </li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Services</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Discounts</a>
+                    <li class="nav-item mb-2"><a href="#"
+                            class="nav-link p-0 text-body-secondary">Discounts</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Dashboard</a>
+                    <li class="nav-item mb-2"><a href="#"
+                            class="nav-link p-0 text-body-secondary">Dashboard</a>
                     </li>
 
                 </ul>

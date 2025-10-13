@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
-   public function showResetNotification(){
+    public function showResetNotification()
+    {
 
 
-    return view('auth.sent-notification');
-   }
+        return view('auth.sent-notification');
+    }
     public function showResetForm($token)
     {
         return view('auth.reset-password', ['token' => $token]);
