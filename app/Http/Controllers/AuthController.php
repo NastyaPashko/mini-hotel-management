@@ -30,6 +30,24 @@ class AuthController extends Controller
         );
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $user = Auth::user();
+            switch ($user->role) {
+                case 'admin':
+                    return redirect()->route('staff.dashboard');
+                case 'manager':
+                    return redirect()->route('staff.dashboard');
+                case 'receptionist':
+                    return redirect()->route('staff.dashboard');
+                case 'client':
+                    return redirect()->route('home');
+                default:
+                    Auth::logout();
+                    return redirect('/login')->withErrors(
+                        ['email' => 'Role not recognized']
+                    );
+
+                
+            }
             return redirect('/');
         } else {
             return back()->withErrors(

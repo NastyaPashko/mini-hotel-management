@@ -28,7 +28,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-large  mb-2 mb-lg-0">
-                    <li class="nav-item"> 
+                    <li class="nav-item">
                         <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
@@ -44,23 +44,46 @@
 
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
-                    <li class="nav-item me-1 mt-2 mt-lg-0">
-                        <a class="site-btn site-btn-green" href="/login">
-                            <svg class="btn_icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M15 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m4.5 13c-.475-9.333-14.525-9.333-15 0" />
-                            </svg>
-                            Login
-                        </a>
-                    </li>
-                    <li class="nav-item mt-2 mt-lg-0">
-                        <a class="site-btn site-btn-green" href="/register">
-                            <svg class="btn_icon" viewBox="0 0 24 24">
-                                <path
-                                    d="M3.5 15h17M3 9.4c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748C6.04 3 7.16 3 9.4 3h5.2c2.24 0 3.36 0 4.216.436a4 4 0 0 1 1.748 1.748C21 6.04 21 7.16 21 9.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C17.96 21 16.84 21 14.6 21H9.4c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C3 17.96 3 16.84 3 14.6z" />
-                            </svg>
-                            Register
-                        </a>
-                    </li>
+                    @auth
+                            <li class="nav-item mt-2 mt-lg-0 d-flex align-items-center">
+                                <a href="#" class="site-btn site-btn-green d-flex align-items-center">
+                                    My Profile
+                                </a>
+                            </li>
+                        @if (in_array(Auth::user()->role, ['admin', 'manager']))
+                            <li class="nav-item mt-2 mt-lg-0 d-flex align-items-center">
+                                <a href="#" class="site-btn site-btn-green">
+                                    Admin Panel
+                                </a>
+                            </li>
+                        @endif
+
+                        <li class="nav-item mt-2 mt-lg-0">
+                            <form method="POST" action="#">
+                                @csrf
+                                <button type="submit" class="site-btn ">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round"
+                                        stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d='M13.496 21H6.5c-1.105 0-2-1.151-2-2.571V5.57c0-1.419.895-2.57 2-2.57h7M16 15.5l3.5-3.5L16 8.5m-6.5 3.496h10' />
+                                    </svg>
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item me-1 mt-2 mt-lg-0">
+                            <a class="site-btn site-btn-green" href="/login">
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item mt-2 mt-lg-0">
+                            <a class="site-btn site-btn-green" href="/register">
+                                Register
+                            </a>
+                        </li>
+                    @endauth
                 </ul>
 
             </div>

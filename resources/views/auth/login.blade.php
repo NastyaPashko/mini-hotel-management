@@ -9,6 +9,20 @@
                         <h3 class="text-center mb-4 fw-bold">Login </h3>
 
                         <form method="POST" action="{{ route('login') }}">
+
+
+                            <div class="container mt-3 w-50 mx-auto">
+                                @if (session('success'))
+                                    <div class="alert alert-success text-center" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                @if (session('error'))
+                                    <div class="alert alert-success text-center" role="alert">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+                            </div>
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -16,7 +30,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label fw-semibold">Email address</label>
                                 <input type="email" name="email" id="email" class="form-control"
-                                    placeholder="you@example.com" autofocus>
+                                    placeholder="Enter your email address" autofocus>
                             </div>
 
                             <div class="mb-3">
@@ -33,7 +47,7 @@
                                         Remember me
                                     </label>
                                 </div>
-                                <a href="#" class="text-decoration-none small text-success">
+                                <a href="{{ route('password.request') }}" class="text-decoration-none small text-success">
                                     Forgot password?
                                 </a>
                             </div>

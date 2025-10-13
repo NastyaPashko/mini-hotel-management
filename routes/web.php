@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\Staff\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +17,11 @@ Route::middleware(['auth', 'role:admin,manager,receptionist'])
     ->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('staff.dashboard');
     });
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showRequestForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+    ->name('password.email');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.request');
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
+    ->name('password.update');
+Route::get('/password/reset/sent', [ResetPasswordController::class, 'showResetNotification'])->name('password.sent');
