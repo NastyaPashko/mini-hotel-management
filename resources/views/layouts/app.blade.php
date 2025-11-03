@@ -29,10 +29,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-large  mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('home')}}">Home</a>
+                        <a class="nav-link {{ Route::currentRouteName()=='home' ? 'active': ''}}" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#">Rooms</a>
+                        <a class="nav-link {{Route::currentRouteName()=='show.rooms' ? 'active': ''}}" aria-current="page" href="{{ route('show.rooms') }}">Rooms</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Services</a>
@@ -146,7 +146,7 @@
 
                 </ul>
             </div>
-            <div class="col-6 col-md-4 mb-3">
+            <div class="col-7 col-md-4 mb-3">
                 <h5 class="fw-bold">Contact</h5>
                 <div> <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
                         viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"

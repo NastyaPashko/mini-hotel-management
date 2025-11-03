@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\Staff\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,4 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
     ->name('password.update');
 Route::get('/password/reset/sent', [ResetPasswordController::class, 'showResetNotification'])->name('password.sent');
 Route::middleware('auth')->post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/hotel-rooms', [RoomController::class, 'showRoomsPage'])->name('show.rooms');

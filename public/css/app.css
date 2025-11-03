@@ -34,7 +34,7 @@ main {
     max-width: 500px;
     margin: 3rem auto;
     padding: 2rem;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 1.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
@@ -60,7 +60,7 @@ main {
     bottom: 0px;
     left: 0;
     width: 100%;
-    max-width: 12rem;
+    max-width: 8rem;
     height: 2px;
     background-color: #398a3c;
     border-radius: 2px;
@@ -101,6 +101,8 @@ main {
     display: block;
 
 }
+
+
 
 #banner-overlay {
     position: absolute;
@@ -203,6 +205,7 @@ main {
 
 footer {
     font-size: 1.1rem;
+    box-sizing: border-box;
 }
 
 footer h2 {
@@ -228,4 +231,162 @@ footer .nav-link:hover {
     font-size: 0.8rem;
     line-height: 1.2;
 
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sidebar .select-item {
+    width: 84%;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background: rgb(30, 153, 30)
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+    background: rgb(14, 98, 14);
+    transform: scale(1.1);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: lightgreen;
+}
+
+.rooms-grid {
+    margin-top: 2rem;
+    ;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+    gap: 2rem;
+    justify-content: center;
+
+}
+
+#priceValue {
+    width: 50px;
+}
+
+.room-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    color: rgb(94, 94, 94);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    font-size: 1.1rem;
+}
+
+.room-image {
+    width: 100%;
+    max-height: 35vh;
+    margin: 0;
+    padding: 0;
+}
+
+.room-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+}
+
+.room-card .card-content {
+    padding: 1rem;
+}
+
+.room-card .card-content h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+.card-content .number {
+    font-size: 1.9rem;
+    color: #4CAF50;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.card-btn {
+    font-size: 1rem;
+    background-color: rgb(238, 238, 238);
+    color: #333;
+    border: solid 1px rgb(217, 217, 217);
+    padding: 0.3rem 1rem;
+    font-weight: 700;
+    border-radius: 0.7rem;
+    margin: 0.2rem;
+    height: 3rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.green-btn {
+    color: #fdfdfd;
+
+    background-color: #4CAF50;
+}
+
+
+.card-btn:hover {
+    background-color: rgb(218, 217, 217);
+    color: #333;
+
+}
+
+.page-header {
+    margin-top: 3rem;
+    padding-left: 20%;
+
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        padding-left: 2%;
+
+    }
+}
+
+
+
+.breadcrumbs {
+    display: flex;
+    gap: 1rem;
+
+}
+
+.rounded-pill {
+    border-radius: 1rem !important;
+}
+
+.auth-form {
+    max-width: 25rem;
+
+}
+
+.auth-form h3 {
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+    .auth-form {
+        box-sizing: content-box;
+        min-width: auto;
+        width: 80%;
+        max-width: none;
+    }
 }
