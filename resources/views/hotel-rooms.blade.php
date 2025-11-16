@@ -1,6 +1,75 @@
 @extends('layouts.app')
 
 @section('content')
+    <div id="sidebar" >
+        <div class="filter-header">
+            <span class="filter-title"> Filters
+            </span>
+            <span id="closeSidebar" class="cross-icon">
+                <svg viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                        sketch:type="MSPage">
+                        <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-467.000000, -1039.000000)"
+                            fill="#000000">
+                            <path
+                                d="M489.396,1061.4 C488.614,1062.18 487.347,1062.18 486.564,1061.4 L479.484,1054.32 L472.404,1061.4 C471.622,1062.18 470.354,1062.18 469.572,1061.4 C468.79,1060.61 468.79,1059.35 469.572,1058.56 L476.652,1051.48 L469.572,1044.4 C468.79,1043.62 468.79,1042.35 469.572,1041.57 C470.354,1040.79 471.622,1040.79 472.404,1041.57 L479.484,1048.65 L486.564,1041.57 C487.347,1040.79 488.614,1040.79 489.396,1041.57 C490.179,1042.35 490.179,1043.62 489.396,1044.4 L482.316,1051.48 L489.396,1058.56 C490.179,1059.35 490.179,1060.61 489.396,1061.4 L489.396,1061.4 Z M485.148,1051.48 L490.813,1045.82 C492.376,1044.26 492.376,1041.72 490.813,1040.16 C489.248,1038.59 486.712,1038.59 485.148,1040.16 L479.484,1045.82 L473.82,1040.16 C472.257,1038.59 469.721,1038.59 468.156,1040.16 C466.593,1041.72 466.593,1044.26 468.156,1045.82 L473.82,1051.48 L468.156,1057.15 C466.593,1058.71 466.593,1061.25 468.156,1062.81 C469.721,1064.38 472.257,1064.38 473.82,1062.81 L479.484,1057.15 L485.148,1062.81 C486.712,1064.38 489.248,1064.38 490.813,1062.81 C492.376,1061.25 492.376,1058.71 490.813,1057.15 L485.148,1051.48 L485.148,1051.48 Z"
+                                id="cross" sketch:type="MSShapeGroup">
+
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+        </div>
+
+        <form method="GET" action="№" class="d-flex flex-column align-items-center gap-3 p-4">
+
+            <!-- Room type -->
+            <div class="select-item">
+                <label for="room_type" class="form-label">Room Type</label>
+                <select name="room_type" id="room_type" class="form-select w-100">
+                    <option value="">All</option>
+                    <option value="single">Single</option>
+                    <option value="double">Double</option>
+                    <option value="suite">Suite</option>
+                </select>
+            </div>
+
+            <!-- Availability -->
+            <div class="select-item">
+                <label for="available" class="form-label">Availability</label>
+                <select name="available" id="available" class="form-select w-100">
+                    <option value="">All</option>
+                    <option value="1">Available</option>
+                    <option value="0">Occupied</option>
+                </select>
+            </div>
+
+            <!-- Capacity -->
+            <div class="select-item">
+                <label for="capacity" class="form-label">Capacity</label>
+                <select name="capacity" id="capacity" class="form-select w-100">
+                    <option value="">Any</option>
+                    <option value="1">1 person</option>
+                    <option value="2">2 persons</option>
+                    <option value="3">3 persons</option>
+                    <option value="4">4 persons</option>
+                </select>
+            </div>
+
+            <div class="w-100 d-flex align-items-center ">
+                <label for="price" class="form-label mb-0">Max Price:</label>
+                <span id="priceValue" style="width: 50px; text-align: right;">0$</span>
+            </div>
+            <input type="range" class="form-range w-100" id="price" name="price" min="0" max="500"
+                value="0" step="10" oninput="document.getElementById('priceValue').innerText=this.value+'$'">
+
+
+
+            <button type="submit" class="site-btn">Apply Filters</button>
+        </form>
+    </div>
+    <div id="overlay" ></div>
     <div class=" page-header container-fluid ">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
@@ -17,60 +86,19 @@
 
         <h1>Available Rooms</h1>
         <p>Find your perfect room and make your stay unforgettable. Book now and enjoy a cozy experience!</p>
-    </div>
-    <div class="container-fluid d-flex flex-column flex-sm-row mt-2">
-
-        <aside class=" sidebar p-4">
-            <form method="GET" action="№" class="d-flex flex-column align-items-center gap-3">
-
-                <!-- Room type -->
-                <div class="select-item">
-                    <label for="room_type" class="form-label">Room Type</label>
-                    <select name="room_type" id="room_type" class="form-select w-100">
-                        <option value="">All</option>
-                        <option value="single">Single</option>
-                        <option value="double">Double</option>
-                        <option value="suite">Suite</option>
-                    </select>
-                </div>
-
-                <!-- Availability -->
-                <div class="select-item">
-                    <label for="available" class="form-label">Availability</label>
-                    <select name="available" id="available" class="form-select w-100">
-                        <option value="">All</option>
-                        <option value="1">Available</option>
-                        <option value="0">Occupied</option>
-                    </select>
-                </div>
-
-                <!-- Capacity -->
-                <div class="select-item">
-                    <label for="capacity" class="form-label">Capacity</label>
-                    <select name="capacity" id="capacity" class="form-select w-100">
-                        <option value="">Any</option>
-                        <option value="1">1 person</option>
-                        <option value="2">2 persons</option>
-                        <option value="3">3 persons</option>
-                        <option value="4">4 persons</option>
-                    </select>
-                </div>
-
-                <div class="w-100 d-flex align-items-center ">
-                    <label for="price" class="form-label mb-0">Max Price:</label>
-                    <span id="priceValue" style="width: 50px; text-align: right;">0$</span>
-                </div>
-                <input type="range" class="form-range w-100" id="price" name="price" min="0" max="500"
-                    value="0" step="10" oninput="document.getElementById('priceValue').innerText=this.value+'$'">
 
 
 
-                <button type="submit" class="site-btn">Apply Filters</button>
-            </form>
-        </aside>
+        <main>
 
-        <main class="flex-grow-1 p-4 ">
-
+            <button class="card-btn green-btn" id="openSidebar">
+                <svg class="filter-icon " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M15 10.5A3.502 3.502 0 0 0 18.355 8H21a1 1 0 1 0 0-2h-2.645a3.502 3.502 0 0 0-6.71 0H3a1 1 0 0 0 0 2h8.645A3.502 3.502 0 0 0 15 10.5zM3 16a1 1 0 1 0 0 2h2.145a3.502 3.502 0 0 0 6.71 0H21a1 1 0 1 0 0-2h-9.145a3.502 3.502 0 0 0-6.71 0H3z"
+                        fill="currentColor" />
+                </svg>
+                Filters
+            </button>
             <div class="rooms-grid">
                 <div class="room-card">
                     <div class="room-image">
@@ -94,7 +122,6 @@
                             </a>
                         </div>
                     </div>
-
 
                 </div>
 
@@ -181,4 +208,6 @@
             </div>
         </main>
     </div>
+
+    <script src="{{ asset('js/filter.js') }}"></script>
 @endsection

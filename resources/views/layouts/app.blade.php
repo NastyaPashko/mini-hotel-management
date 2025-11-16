@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body class="no-scroll">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -29,10 +29,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-large  mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {{ Route::currentRouteName()=='home' ? 'active': ''}}" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
+                            href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{Route::currentRouteName()=='show.rooms' ? 'active': ''}}" aria-current="page" href="{{ route('show.rooms') }}">Rooms</a>
+                        <a class="nav-link {{ Route::currentRouteName() == 'show.rooms' ? 'active' : '' }}"
+                            aria-current="page" href="{{ route('show.rooms') }}">Rooms</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Services</a>
