@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccommodationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
@@ -18,7 +19,16 @@ Route::middleware(['auth', 'role:admin,manager,receptionist'])
     ->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('staff.dashboard');
     });
+Route::middleware(['auth', 'role:admin,manager'])
+    ->prefix('staff')
+    ->group(function () {
+        Route::GET('rooms', [RoomController::class, 'index']);
+        Route::post('rooms', [RoomController::class, 'store'])->name('rooms.store');
+        Route::delete('rooms/{room}', [RoomController::class, 'delete'])->name('rooms.delete');
+    });
 
+
+Route::get('/hotel-rooms', [RoomController::class, 'showRoomsPage'])->name('show.rooms');
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showRequestForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
     ->name('password.email');
@@ -27,4 +37,3 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
     ->name('password.update');
 Route::get('/password/reset/sent', [ResetPasswordController::class, 'showResetNotification'])->name('password.sent');
 Route::middleware('auth')->post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/hotel-rooms', [RoomController::class, 'showRoomsPage'])->name('show.rooms');

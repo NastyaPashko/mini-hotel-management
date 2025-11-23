@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="sidebar" >
+    <div id="sidebar">
         <div class="filter-header">
             <span class="filter-title"> Filters
             </span>
             <span id="closeSidebar" class="cross-icon">
                 <svg viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                        sketch:type="MSPage">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
                         <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-467.000000, -1039.000000)"
                             fill="#000000">
                             <path
@@ -69,7 +68,7 @@
             <button type="submit" class="site-btn">Apply Filters</button>
         </form>
     </div>
-    <div id="overlay" ></div>
+    <div id="overlay"></div>
     <div class=" page-header container-fluid ">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
@@ -174,7 +173,9 @@
                             <a class="card-btn green-btn" href="#">
                                 Book Now
                             </a>
+
                         </div>
+
                     </div>
 
 
