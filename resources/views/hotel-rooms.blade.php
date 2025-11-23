@@ -21,16 +21,16 @@
             </span>
         </div>
 
-        <form method="GET" action="№" class="d-flex flex-column align-items-center gap-3 p-4">
+        <form method="GET" action="{{ route('rooms.index') }}" class="d-flex flex-column align-items-center gap-3 p-4">
 
             <!-- Room type -->
             <div class="select-item">
                 <label for="room_type" class="form-label">Room Type</label>
                 <select name="room_type" id="room_type" class="form-select w-100">
                     <option value="">All</option>
-                    <option value="single">Single</option>
-                    <option value="double">Double</option>
-                    <option value="suite">Suite</option>
+                    @foreach ($roomTypes as $roomType)
+                        <option value="{{ strtolower($roomType->name) }}">{{ $roomType->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -63,6 +63,16 @@
             <input type="range" class="form-range w-100" id="price" name="price" min="0" max="500"
                 value="0" step="10" oninput="document.getElementById('priceValue').innerText=this.value+'$'">
 
+            <div class="select-item w-100">
+                <label for="check_in" class="form-label">Check-in</label>
+                <input type="date" name="check_in" id="check_in" class="form-control" value="{{ request('check_in') }}">
+            </div>
+
+            <div class="select-item w-100">
+                <label for="check_out" class="form-label">Check-out</label>
+                <input type="date" name="check_out" id="check_out" class="form-control"
+                    value="{{ request('check_out') }}">
+            </div>
 
 
             <button type="submit" class="site-btn">Apply Filters</button>
@@ -99,113 +109,36 @@
                 Filters
             </button>
             <div class="rooms-grid">
-                <div class="room-card">
-                    <div class="room-image">
-                        <img src="{{ asset('images/istockphoto-2163985013-612x612.jpg') }}">
-                    </div>
-                    <div class="card-content">
 
-                        <h3 class="text-dark">Room </h3>
-                        <p>Single</p>
-                        <p><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d='M21 19.75c0-2.09-1.67-5.068-4-5.727m-2 5.727c0-2.651-2.686-6-6-6s-6 3.349-6 6m9-12.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m3 3a3 3 0 1 0 0-6' />
-                            </svg> 2 persons</p>
-                        <p><span class="number">$120</span> / night</p>
-                        <div class="d-flex justify-content-center flex-md-row flex-column">
-                            <a class="card-btn " href="#"> View Rooms</a>
-                            <a class="card-btn green-btn" href="#">
-                                Book Now
-                            </a>
+
+                @foreach ($rooms as $room)
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="{{ asset('storage/' . $room->photo) }}" alt="Room Photo">
                         </div>
-                    </div>
+                        <div class="card-content">
 
-                </div>
-
-
-                <div class="room-card">
-                    <div class="room-image">
-                        <img src="{{ asset('images/enzian-small-075.jpg') }}">
-                    </div>
-                    <div class="card-content">
-
-                        <h3 class="text-dark">Room </h3>
-                        <p>Single</p>
-                        <p><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d='M21 19.75c0-2.09-1.67-5.068-4-5.727m-2 5.727c0-2.651-2.686-6-6-6s-6 3.349-6 6m9-12.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m3 3a3 3 0 1 0 0-6' />
-                            </svg> 2 persons</p>
-                        <p><span class="number">$120</span> / night</p>
-                        <div class="d-flex justify-content-center flex-md-row flex-column">
-                            <a class="card-btn " href="#"> View Rooms</a>
-                            <a class="card-btn green-btn" href="#">
-                                Book Now
-                            </a>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <div class="room-card">
-                    <div class="room-image">
-                        <img
-                            src="{{ asset('images/pngtree-single-bed-hotel-room-warm-color-and-simple-style-picture-image_1679568.jpg') }}">
-                    </div>
-                    <div class="card-content">
-
-                        <h3 class="text-dark">Room </h3>
-                        <p>Single</p>
-                        <p><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d='M21 19.75c0-2.09-1.67-5.068-4-5.727m-2 5.727c0-2.651-2.686-6-6-6s-6 3.349-6 6m9-12.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m3 3a3 3 0 1 0 0-6' />
-                            </svg> 2 persons</p>
-                        <p><span class="number">$120</span> / night</p>
-                        <div class="d-flex justify-content-center flex-md-row flex-column">
-                            <a class="card-btn " href="#"> View Rooms</a>
-                            <a class="card-btn green-btn" href="#">
-                                Book Now
-                            </a>
-
+                            <h3 class="text-dark">Room {{ $room->number }} </h3>
+                            <p>{{ ucfirst($room->roomType->name) }}</p>
+                            <p><svg width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round"
+                                    stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d='M21 19.75c0-2.09-1.67-5.068-4-5.727m-2 5.727c0-2.651-2.686-6-6-6s-6 3.349-6 6m9-12.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m3 3a3 3 0 1 0 0-6' />
+                                </svg> {{ $room->places }} persons</p>
+                            <p><span class="number">${{ $room->base_price }}</span> / night</p>
+                            <div class="d-flex justify-content-center flex-md-row flex-column">
+                                <a class="card-btn " href="#"> View Room</a>
+                                <a class="card-btn green-btn" href="#">
+                                    Book Now
+                                </a>
+                            </div>
                         </div>
 
+
                     </div>
+                @endforeach
 
-
-                </div>
-
-                <div class="room-card">
-                    <div class="room-image">
-                        <img src="{{ asset('images/istockphoto-2163985013-612x612.jpg') }}">
-                    </div>
-                    <div class="card-content">
-
-                        <h3 class="text-dark">Room </h3>
-                        <p>Single</p>
-                        <p><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d='M21 19.75c0-2.09-1.67-5.068-4-5.727m-2 5.727c0-2.651-2.686-6-6-6s-6 3.349-6 6m9-12.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m3 3a3 3 0 1 0 0-6' />
-                            </svg> 2 persons</p>
-                        <p><span class="number">$120</span> / night</p>
-                        <div class="d-flex justify-content-center flex-md-row flex-column">
-                            <a class="card-btn " href="#"> View Rooms</a>
-                            <a class="card-btn green-btn" href="#">
-                                Book Now
-                            </a>
-                        </div>
-                    </div>
-
-
-                </div>
             </div>
         </main>
     </div>

@@ -22,9 +22,10 @@ Route::middleware(['auth', 'role:admin,manager,receptionist'])
 Route::middleware(['auth', 'role:admin,manager'])
     ->prefix('staff')
     ->group(function () {
-        Route::GET('rooms', [RoomController::class, 'index']);
+        Route::GET('rooms', [RoomController::class, 'index'])->name('rooms.index');
         Route::post('rooms', [RoomController::class, 'store'])->name('rooms.store');
         Route::delete('rooms/{room}', [RoomController::class, 'delete'])->name('rooms.delete');
+        Route::put('rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
     });
 
 

@@ -34,9 +34,13 @@
                         <td>{{ number_format($room->base_price, 2) }}</td>
 
                         <td>
-                            <a href="#" class="action-btn btn-edit  ">Edit</a>
+                            <a href="#" class="action-btn btn-edit" data-bs-toggle="modal"
+                                data-bs-target="#editRoomModal-{{ $room->id }}">
+                                Edit
+                            </a>
 
-                            <form action="{{ route('rooms.delete', $room->id) }}"  method="POST"
+                            <x-edit-room-modal :room="$room" :roomTypes="$roomTypes" />
+                            <form action="{{ route('rooms.delete', $room->id) }}" method="POST"
                                 style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
