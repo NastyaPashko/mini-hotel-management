@@ -1,37 +1,50 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
 
-return new class extends Migration
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Booking extends Model
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    use HasFactory;
+
+    protected $fillable = [
+        'room_id',
+        'user_id',
+        'date_from',
+        'date_to',
+        'guests_count',
+        'status',
+        'total_amount',
+    ];
+    public function room()
     {
-        Schema::create('bookings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('room_id')->constrained('rooms')->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->date('date_from');
-            $table->date('date_to');
-            $table->unsignedInteger('guests_count')->default(1);
-
-            $table->enum('status', ['pending', 'confirmed', 'cancelled'])
-                ->default('pending');
-
-            $table->decimal('total_amount', 12, 2)->default(0);
-
-            $table->timestamps();
-        });
+        return $this->belongsTo(Room::class);
     }
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function user()
     {
-        Schema::dropIfExists('bookings');
+        return $this->belongsTo(User::class);
     }
-};
+
+    public function nights()
+    {
+        return \Carbon\Carbon::parse($this->date_from)
+            ->diffInDays(\Carbon\Carbon::parse($this->date_to));
+    }
+
+    public function isConfirmed()
+    {
+        return $this->status === 'confirmed';
+    }
+
+    public function isPending()
+    {
+        return $this->status === 'pending';
+    }
+
+    public function isCancelled()
+    {
+        return $this->status === 'cancelled';
+    }
+}

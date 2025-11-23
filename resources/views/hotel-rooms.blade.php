@@ -23,7 +23,6 @@
 
         <form method="GET" action="{{ route('rooms.index') }}" class="d-flex flex-column align-items-center gap-3 p-4">
 
-            <!-- Room type -->
             <div class="select-item">
                 <label for="room_type" class="form-label">Room Type</label>
                 <select name="room_type" id="room_type" class="form-select w-100">
@@ -34,7 +33,6 @@
                 </select>
             </div>
 
-            <!-- Availability -->
             <div class="select-item">
                 <label for="available" class="form-label">Availability</label>
                 <select name="available" id="available" class="form-select w-100">
@@ -129,7 +127,7 @@
                             <p><span class="number">${{ $room->base_price }}</span> / night</p>
                             <div class="d-flex justify-content-center flex-md-row flex-column">
                                 <a class="card-btn " href="#"> View Room</a>
-                                <a class="card-btn green-btn" href="#">
+                                <a class="card-btn green-btn" href="{{ route('booking.create', $room->id) }}">
                                     Book Now
                                 </a>
                             </div>

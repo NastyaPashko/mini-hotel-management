@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AccommodationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\RoomController;
@@ -38,3 +38,9 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
     ->name('password.update');
 Route::get('/password/reset/sent', [ResetPasswordController::class, 'showResetNotification'])->name('password.sent');
 Route::middleware('auth')->post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware('auth')
+    ->get('/book-room/{room}', [BookingController::class, 'create'])
+    ->name('booking.create');
+
+Route::post('/book-room/{room}', [BookingController::class, 'store'])
+    ->name('booking.store');

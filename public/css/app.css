@@ -513,3 +513,35 @@ input[type=range]::-webkit-slider-runnable-track {
 .btn-delete:hover {
     background-color: #c0392b;
 }
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    color: #444;
+}
+
+.breadcrumbs a {
+    color: #2a7ae2;      
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+    color: #1558b0;      
+    text-decoration: underline;
+}
+
+.breadcrumbs span {
+    color: #888;
+}
+
+.breadcrumbs svg {
+    margin-right: 4px;
+    stroke: #555;
+}
+.booking-container {
+    max-width: 850px; 
+    border-radius: 10px;
+}
