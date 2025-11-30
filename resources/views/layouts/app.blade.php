@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/app.css') }}?v=1.0" rel="stylesheet">
+    <link rel="icon" href="{{ asset('icons/favicon.ico') }}">
 </head>
 
 <body class="no-scroll">
@@ -98,9 +98,9 @@
                         </li>
                         <li class="nav-item mt-2 mt-lg-0">
                             <a class="site-btn site-btn-green" href="/register">
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round"
+                                    stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                                     <path d='M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2H9z' />
                                     <path d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2' />
                                 </svg>

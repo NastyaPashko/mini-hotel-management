@@ -16,10 +16,11 @@
                     <th>Actions</th>
                 </tr>
             </thead>
+
             <tbody class="table-light">
                 @foreach ($rooms as $index => $room)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $rooms->firstItem() + $index }}</td>
 
                         <td>
                             @if ($room->photo)
@@ -40,11 +41,11 @@
                             </a>
 
                             <x-edit-room-modal :room="$room" :roomTypes="$roomTypes" />
+
                             <form action="{{ route('rooms.delete', $room->id) }}" method="POST"
                                 style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-
                                 <button type="submit" class="action-btn btn-delete"
                                     onclick="return confirm('Are you sure you want to delete this room?');">
                                     Delete
@@ -57,14 +58,16 @@
             </tbody>
         </table>
 
+        <div class="d-flex justify-content-center mt-4">
+            {{ $rooms->links() }}
+        </div>
+
         <div class="text-end mt-3">
             <a href="#" class="action-btn btn-add" data-bs-toggle="modal" data-bs-target="#addRoomModal">
                 Add New Room
             </a>
         </div>
 
-
         <x-add-room-modal :roomTypes="$roomTypes" />
-
     </div>
 @endsection

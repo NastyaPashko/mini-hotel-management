@@ -13,8 +13,7 @@ class RoomController extends Controller
 
     public function index()
     {
-
-        $rooms = Room::all();
+        $rooms = Room::with('roomType')->paginate(3);
         $roomTypes = RoomType::all();
         return view('staff.accommodation.rooms-index', compact('rooms', 'roomTypes'));
     }
@@ -27,22 +26,24 @@ class RoomController extends Controller
                 $q->where('name', strtolower($request->room_type));
             });
         }
+
         if ($request->filled('available')) {
             $query->where('is_available', $request->available);
         }
+
         if ($request->filled('capacity')) {
             $query->where('places', '>=', $request->capacity);
         }
+
         if ($request->filled('price')) {
             $query->where('base_price', '<=', $request->price);
         }
 
         if ($request->filled(['check_in', 'check_out'])) {
-
             $checkIn  = $request->check_in;
             $checkOut = $request->check_out;
-            $query->whereDoesntHave('bookings', function ($q) use ($checkIn, $checkOut) {
 
+            $query->whereDoesntHave('bookings', function ($q) use ($checkIn, $checkOut) {
                 $q->whereIn('status', ['confirmed', 'pending'])
                     ->where(function ($overlap) use ($checkIn, $checkOut) {
                         $overlap->where('check_in', '<', $checkOut)
@@ -51,12 +52,13 @@ class RoomController extends Controller
             });
         }
 
-        $rooms = $query->get();
+        $rooms = $query->paginate(5);
 
         $roomTypes = RoomType::all();
 
         return view('hotel-rooms', compact('rooms', 'roomTypes'));
     }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

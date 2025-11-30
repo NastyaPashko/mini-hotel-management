@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\Booking;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,5 +52,11 @@ class BookingController extends Controller
 
         return redirect()->route('booking.services', $booking->id)
             ->with('success', 'Booking created! Now you can add services.');
+    }
+    public function services(Booking $booking)
+    {
+        $services = Service::all();
+
+        return view('bookings.services', compact('booking', 'services'));
     }
 }

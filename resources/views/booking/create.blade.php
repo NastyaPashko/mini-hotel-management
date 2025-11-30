@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container booking-container py-4 bg-white mt-3">
+    <div class="container booking-container py-4 my-3 bg-white ">
 
         <nav class="breadcrumbs mb-3" aria-label="Breadcrumb">
             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"

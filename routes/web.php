@@ -27,8 +27,6 @@ Route::middleware(['auth', 'role:admin,manager'])
         Route::delete('rooms/{room}', [RoomController::class, 'delete'])->name('rooms.delete');
         Route::put('rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
     });
-
-
 Route::get('/hotel-rooms', [RoomController::class, 'showRoomsPage'])->name('show.rooms');
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showRequestForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
@@ -41,6 +39,7 @@ Route::middleware('auth')->post('/logout', [AuthController::class, 'logout'])->n
 Route::middleware('auth')
     ->get('/book-room/{room}', [BookingController::class, 'create'])
     ->name('booking.create');
-
 Route::post('/book-room/{room}', [BookingController::class, 'store'])
     ->name('booking.store');
+Route::get('/bookings/{booking}/services', [BookingController::class, 'services'])
+    ->name('booking.services');

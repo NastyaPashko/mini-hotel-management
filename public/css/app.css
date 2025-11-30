@@ -234,6 +234,8 @@ footer .nav-link:hover {
 }
 
 .sidebar {
+    max-height: 100vh;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
 
@@ -507,12 +509,13 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .btn-delete {
-    background-color: #e74c3c; 
+    background-color: #e74c3c;
 }
 
 .btn-delete:hover {
     background-color: #c0392b;
 }
+
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -522,14 +525,14 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .breadcrumbs a {
-    color: #2a7ae2;      
+    color: #2a7ae2;
     text-decoration: none;
     font-weight: 500;
     transition: 0.2s ease;
 }
 
 .breadcrumbs a:hover {
-    color: #1558b0;      
+    color: #1558b0;
     text-decoration: underline;
 }
 
@@ -541,7 +544,34 @@ input[type=range]::-webkit-slider-runnable-track {
     margin-right: 4px;
     stroke: #555;
 }
+
 .booking-container {
-    max-width: 850px; 
+    max-width: 850px;
     border-radius: 10px;
+}
+
+
+.pagination {
+    display: flex;
+    gap: 6px;
+}
+
+.pagination .page-item .page-link {
+    border-radius: 8px;
+    padding: 6px 12px;
+    border: 1px solid #28a745;
+    color: #28a745;
+    background: white;
+    transition: 0.2s ease;
+}
+
+.pagination .page-item.active .page-link {
+    background: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.pagination .page-item .page-link:hover {
+    background: #28a745;
+    color: white;
 }

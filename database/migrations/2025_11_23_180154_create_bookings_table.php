@@ -1,50 +1,39 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Booking extends Model
+return new class extends Migration
 {
-    use HasFactory;
+    public function up(): void
+    {
+        Schema::create('bookings', function (Blueprint $table) {
+            $table->id();
 
-    protected $fillable = [
-        'room_id',
-        'user_id',
-        'date_from',
-        'date_to',
-        'guests_count',
-        'status',
-        'total_amount',
-    ];
-    public function room()
-    {
-        return $this->belongsTo(Room::class);
-    }
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+            $table->foreignId('room_id')
+                  ->constrained('rooms')
+                  ->onDelete('cascade');
 
-    public function nights()
-    {
-        return \Carbon\Carbon::parse($this->date_from)
-            ->diffInDays(\Carbon\Carbon::parse($this->date_to));
-    }
+            $table->foreignId('user_id')
+                  ->constrained('users')
+                  ->onDelete('cascade');
 
-    public function isConfirmed()
-    {
-        return $this->status === 'confirmed';
+            $table->date('date_from');
+            $table->date('date_to');
+
+            $table->unsignedInteger('guests_count');
+            $table->decimal('total_amount', 10, 2);
+
+            $table->enum('status', ['pending', 'confirmed', 'cancelled'])
+                  ->default('pending');
+
+            $table->timestamps();
+        });
     }
 
-    public function isPending()
+    public function down(): void
     {
-        return $this->status === 'pending';
+        Schema::dropIfExists('bookings');
     }
-
-    public function isCancelled()
-    {
-        return $this->status === 'cancelled';
-    }
-}
+};
